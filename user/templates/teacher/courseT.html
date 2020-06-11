@@ -6,13 +6,15 @@
    <div class="container">
       <style>
          .box-search-course {
-         margin-bottom: 30px
+            margin-bottom: 30px
          }
+
          .box-search-course .form-group input {
-         width: 100%
+            width: 100%
          }
+
          .box-search-course .box-input {
-         width: 89%
+            width: 89%
          }
       </style>
       <main>
@@ -22,10 +24,10 @@
                   <div id="main-content">
                      <div class="main-inner">
                         <div class="panel panel-default">
-                           <div class="panel-heading"> 
+                           <div class="panel-heading">
                               <span style="font-weight: bold;">
-                                 <i class="fa fa-book" aria-hidden="true"></i> 
-                                 Khoa hoc cua toi </span> 
+                                 <i class="fa fa-book" aria-hidden="true"></i>
+                                 Khoa hoc cua toi </span>
                            </div>
                            <div class="panel-body">
                               <div class="tab-content">
@@ -34,15 +36,17 @@
                                        <div class="u-combo-course">
                                           <ul>
                                              {% for c in courses %}
-                                               <li>
+                                             <li>
                                                 <div class="u-combo-usua">
-                                                   <div class="img-combo-favorited"><img class="img-responsive" src="{{c.image.url}}" alt="" /></div>
+                                                   <div class="img-combo-favorited"><img class="img-responsive"
+                                                         src="{{c.image.url}}" alt="" /></div>
                                                    <div class="des-combo">
                                                       <a href="{% url 'full_course' c.id %}">{{c.title}}</a>
                                                       <div class="gv-combo">{{c.own_teacher.fullname}}</div>
                                                       <div class="rate-combo">
                                                          <p>Đánh giá: 5</p>
-                                                         <span><i class="fa fa-users" aria-hidden="true"></i> 5495 học viên</span>
+                                                         <span><i class="fa fa-users" aria-hidden="true"></i> 5495 học
+                                                            viên</span>
                                                       </div>
                                                    </div>
                                                    <div class="price-combo">
@@ -68,24 +72,24 @@
       </main>
       <script>
          $(window).on('load', function () {
-             $('#modalNotification').modal('show');
+            $('#modalNotification').modal('show');
          });
-         
+
          function reActive(id) {
-             $.ajax({
-                 type: 'POST',
-                 url: '/membership/courseactive',
-                 data: {id: id},
-                 success: function (result) {
-                     console.log(result);
-                     if (result.success) {
-                         location.reload();
-                     } else {
-                         $('#showModalErrors').modal('show')
-                         $('#noti_error').html(result.message);
-                     }
-                 }
-             });
+            $.ajax({
+               type: 'POST',
+               url: '/membership/courseactive',
+               data: { id: id },
+               success: function (result) {
+                  console.log(result);
+                  if (result.success) {
+                     location.reload();
+                  } else {
+                     $('#showModalErrors').modal('show')
+                     $('#noti_error').html(result.message);
+                  }
+               }
+            });
          }
       </script>
    </div>
